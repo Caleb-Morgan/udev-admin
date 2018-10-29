@@ -1,45 +1,51 @@
-import { CHANGE_INPUT_VALUE, ADD_LIST, DELETE_LIST, INIT_LIST} from './actionType'
-
-//设置默认值
+import React from 'react'
+import { CHANGE_INPUT, ADD_LIST, DELETE_LIST, INIT_LIST } from './actionType';
+import { Modal } from 'antd';
 const defaultState = {
     inputValue: '',
-    placeHolder: '请输入',
-    list: []
+    list: [],
+    placeHolder: '请输入'
 }
 
-//纯函数如果给固定输入一定会给固定输出，而且不会有任何副作用
 export default (state = defaultState, action) =>{
     let newState = JSON.parse(JSON.stringify(state));
     switch(action.type){
-        case CHANGE_INPUT_VALUE:
+        case CHANGE_INPUT:
         newState.inputValue = action.value;
-        break;
+        return newState;
         case ADD_LIST:
-        const ck = newState.list.filter(
-            (item)=>{
+        const check_list = newState.list.filter(
+            (item) =>{
                 if(item === action.value){
                     return item;
+                }else{
+                    return false;
                 }
-                return false;
-            }
-            )
-        if(ck.length<=0){
-            newState.list.push(action.value);
+                
+            })
+        if(check_list.length === 0){
+            newState.list.push(action.value)
+            newState.inputValue = '';
         }else{
-            action.info('该项已存在！！！')
+            Modal.info({
+                title:'提示',
+                content:(
+                    <div>该项已存在</div>
+                ),
+                onOk(){}
+            })
+            
         }
         
-        newState.inputValue = '';
-        break;
+        return newState;
         case DELETE_LIST:
         newState.list.splice(action.index, 1);
-        break;
+        return newState;
         case INIT_LIST:
-        newState.list = action.data;
-        break;
+        newState.list = action.list;
+        return newState;
         default:
         break;
     }
-    state = newState;
     return state
 }

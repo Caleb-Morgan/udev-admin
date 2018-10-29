@@ -1,67 +1,54 @@
 import React, { Component } from 'react';
-import 'antd/dist/antd.css';  // or 'antd/dist/antd.less'
-import TodoListUI from './TodoListUI';
 import store from './store/index';
-import {changeInputValue, addList, deleteList, getTodoList} from './store/actionCreater';
+import TodoListUI from './TodoListUI';
+import { changeInput, addList, deleteList, getInitList } from './store/acitonCreater';
 
-import { Modal } from 'antd';
+import 'antd/dist/antd.css';  // or 'antd/dist/antd.less'
 
-
-//容器组件不关注UI 只关注业务逻辑
 class TodoList extends Component{
     constructor(props){
         super(props)
         this.state = store.getState();
-        this.handelChange = this.handelChange.bind(this)
-        this.handelClick = this.handelClick.bind(this)
-        this.handelDelete = this.handelDelete.bind(this)
-        this.changeStore = this.changeStore.bind(this)
-        this.info = this.info.bind(this)
-        store.subscribe(this.changeStore)
+        this.handelChange = this.handelChange.bind(this);
+        this.handelClick = this.handelClick.bind(this);
+        this.handelDelete = this.handelDelete.bind(this);
+        this.changeState = this.changeState.bind(this);
+        store.subscribe(this.changeState);
     }
 
-    changeStore(){
-        this.setState(store.getState()) 
+    changeState(){
+        this.setState(store.getState);
     }
 
     handelChange(e){
-        const action = changeInputValue(e.target.value)
-        store.dispatch(action)
+        const action = changeInput(e.target.value);
+        store.dispatch(action);
     }
 
     handelClick(){
-        const action = addList(this.state.inputValue, this.info)
-        store.dispatch(action)
+        const action = addList(this.state.inputValue);
+        store.dispatch(action);
     }
 
     handelDelete(index){
-        const action = deleteList(index)
+        const action = deleteList(index);
         store.dispatch(action)
-        this.info('已经删除该条数据！')
     }
-    info(msg){
-        Modal.info({
-            title: '提示',
-            content: (
-                <div>{msg}</div>
-            ),
-            onOk(){}
-        })
-    }
+
     render(){
         return(
             <TodoListUI
-            placeholder={this.state.placeholder}
-            inputValue={this.state.inputValue}
             handelChange={this.handelChange}
             handelClick={this.handelClick}
             handelDelete={this.handelDelete}
             list={this.state.list}
+            placeHolder={this.state.placeHolder}
+            inputValue={this.state.inputValue}
             />
         )
     }
     componentDidMount(){
-        const action = getTodoList();
+        const action = getInitList();
         store.dispatch(action)
     }
 }
