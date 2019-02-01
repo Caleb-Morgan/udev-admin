@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { GlobalStyle } from './style';
-import { Iconfont } from './static/iconfont/iconfont';
+import { Iconfont } from './static/iconfont';
 
-
-const root = (
+var system = (
     <div>
         <GlobalStyle/>
         <Iconfont/>
@@ -13,6 +12,5 @@ const root = (
     </div>
 )
 
-ReactDOM.render(root, document.getElementById('root'));
-
+ReactDOM.render(system, document.getElementById('root'));
 
