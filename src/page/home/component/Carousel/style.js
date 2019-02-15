@@ -19,7 +19,7 @@ export const CarouselWrapper = styled.div`
         font-size: 2rem;
         line-height: 50px;
         text-align: center;
-        z-index: 999;
+        z-index: 111;
         cursor: pointer;
         color:#fff;
         background: rgba(0, 0, 0, 0.5);
@@ -37,7 +37,7 @@ export const CarouselWrapper = styled.div`
         font-size: 2rem;
         line-height: 50px;
         text-align: center;
-        z-index: 999;
+        z-index: 111;
         cursor: pointer;
         color:#fff;
         background: rgba(0, 0, 0, 0.5);

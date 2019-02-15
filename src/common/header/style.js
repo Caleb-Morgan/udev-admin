@@ -59,7 +59,7 @@ export const Account = styled.div`
 export const Button = styled.div`
     float: left;
     height: 38px;
-    line-height: 23px;
+    line-height: 26px;
     margin-top: 9px;
     padding: 5px 20px;
     border-radius: 19px;

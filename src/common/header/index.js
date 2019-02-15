@@ -49,7 +49,7 @@ class Header extends Component{
             <Headerbox>
                 <Logo></Logo>
                 <Nav>
-                    <NavItem className="left icon iconfont">&#xe780;首页</NavItem>
+                    <NavItem className="left icon iconfont">&#xe780;发现</NavItem>
                     <NavItem className="left">下载APP</NavItem>
                     <NavItem className="left search">
                         <SearchWrapper>

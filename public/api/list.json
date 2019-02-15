@@ -1,0 +1,9 @@
+{
+    "status": true,
+    "data": [
+        {"name": "Caleb", "word": 1000, "like": 2000},
+        {"name": "Aplcal", "word": 1000, "like": 2000},
+        {"name": "Null", "word": 1000, "like": 2000},
+        {"name": "Notfound", "word": 1000, "like": 2000}
+    ]
+}

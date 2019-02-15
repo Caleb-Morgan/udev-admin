@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import  { HomeWrapper, HomeLeft, HomeRight } from './style';
 import List from './component/List';
+import Topic from './component/Topic';
+import Author from './component/Author';
+import Recommend from './component/Recommend';
 import Carousel from './component/Carousel/Carousel';
-//import pic from '../../static/pic.jpg';
 import data from './component/Carousel/data.json'
 
 class Home extends Component{
@@ -21,7 +23,11 @@ class Home extends Component{
                     <Carousel lunboObject={data.lunboObject} imgArray={data.imgArray} linkArray={data.linkArray}></Carousel>
                     <List></List>
                 </HomeLeft>
-                <HomeRight></HomeRight>
+                <HomeRight>
+                    <Recommend></Recommend>
+                    <Topic></Topic>
+                    <Author></Author>
+                </HomeRight>
             </HomeWrapper>
         )
     }

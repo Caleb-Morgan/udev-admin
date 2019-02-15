@@ -54,4 +54,8 @@ export const Map = styled.div `
 	`
 export const Headerbox = styled.div`
 	border-bottom: 1px solid #eee;
+	position: fixed;
+	width: 100%;
+	background: #fff;
+	z-index:222;
 `
