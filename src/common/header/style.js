@@ -26,6 +26,7 @@ export const Logo = styled.div`
     margin-right:100px;
     background: url(${logo});
     background-size:  100%;
+    cursor: pointer;
 `
 
 export const Nav = styled.div`
@@ -159,4 +160,14 @@ export const SearchInfoItem = styled.div`
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 10px;    
+`
+export const TopBtn = styled.div`
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    cursor: pointer;
+    &.iconfont{
+        font-size: 2.5rem;
+        color: #666;
+    }
 `

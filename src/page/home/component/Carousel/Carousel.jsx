@@ -136,8 +136,8 @@ class Carousel extends Component{
         var _this = this;
         return(
             <CarouselWrapper style={{width:this.props.lunboObject.imgWidth, height:this.props.lunboObject.imgHeight}} onMouseOver={this.mouseHandle} onMouseLeave={this.mouseHandle}>
-            <span className="leftIcon icon iconfont" onClick={this.left}>&#xe857;</span>
-            <span className="rightIcon icon iconfont" onClick={this.right}>&#xe856;</span>
+            <span className={"leftIcon icon iconfont" + (this.state.pause ? ' show' : '') } onClick={this.left}>&#xe857;</span>
+            <span className={"rightIcon icon iconfont" + (this.state.pause ? ' show' : '') } onClick={this.right}>&#xe856;</span>
             <div className="dots-wrap">
                 {   
                     React.Children.map(this.props.children,function(elem,index){

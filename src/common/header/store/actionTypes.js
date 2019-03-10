@@ -4,3 +4,4 @@ export const HANDELENTER = 'header/handelEnter';
 export const HANDELLEAVE = 'header/handelLeave';
 export const CHANGELIST = 'header/changeList';
 export const CHANGEPAGE = 'header/changePage';
+export const SHOWSCROLL = 'header/showscroll';

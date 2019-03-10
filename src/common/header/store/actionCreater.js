@@ -18,6 +18,11 @@ export const handel_leave = () =>({
     type: creaters.HANDELLEAVE
 })
 
+export const show_scroll = (status) =>({
+    type: creaters.SHOWSCROLL,
+    status
+})
+
 export const change_list = (data) =>({
     type: creaters.CHANGELIST,
     totalPage: Math.ceil(data.size/10),

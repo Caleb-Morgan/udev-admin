@@ -12,13 +12,18 @@ import {
     SearchInfo, 
     SearchInfoTitle, 
     SearchInfoSwitch, 
-    SearchInfoItem } from './style';
+    SearchInfoItem,
+    TopBtn } from './style';
 import { CSSTransition } from  'react-transition-group';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import *as creaters from './store/actionCreater';
 
 
 class Header extends Component{
+    componentDidMount(){
+        this.props.bindEvent()
+    }
     searchInfo(focused, mouseIn){
 
         if(focused  || mouseIn){
@@ -44,10 +49,12 @@ class Header extends Component{
         }
     }    
     render(){
-        const { focused, mouseIn, searchBlur, searchFoucus, list}  = this.props;
+        const { focused, mouseIn, searchBlur, searchFoucus, toTop, list, showScroll}  = this.props;
         return(
             <Headerbox>
-                <Logo></Logo>
+                <Link to="/">
+                    <Logo></Logo>
+                </Link>
                 <Nav>
                     <NavItem className="left icon iconfont">&#xe780;发现</NavItem>
                     <NavItem className="left">下载APP</NavItem>
@@ -72,7 +79,9 @@ class Header extends Component{
                     </Account>
                     <NavItem className="right">登录</NavItem>
                     <NavItem className="right">Aa</NavItem>
-                </Nav>  
+                </Nav>
+                {showScroll ? <TopBtn className="iconfont" onClick = {toTop}>&#xe7b8;</TopBtn> : null}
+                  
             </Headerbox>
         )
         }
@@ -84,7 +93,8 @@ const mapStateToProps = (state) =>{
         mouseIn: state.getIn(['header', 'mouseIn']),
         page: state.getIn(['header', 'page']),
         totalPage: state.getIn(['header', 'totalPage']),
-        list: state.getIn(['header', 'list'])
+        list: state.getIn(['header', 'list']),
+        showScroll: state.getIn(['header', 'showScroll'])
     }
 }
 
@@ -111,6 +121,18 @@ const mapDispatchToProps = (dispatch) =>{
             }else{
                 dispatch(creaters.change_page(1))
             }
+        },
+        toTop(){
+            window.scrollTo(0, 0);
+        },
+        bindEvent(){
+            window.addEventListener('scroll', () => {
+                if(document.documentElement.scrollTop > 200){
+                    dispatch(creaters.show_scroll(true))
+                }else{
+                    dispatch(creaters.show_scroll(false))
+                }
+            })
         }
     }
 }

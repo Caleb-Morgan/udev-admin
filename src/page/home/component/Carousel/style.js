@@ -8,9 +8,12 @@ export const CarouselWrapper = styled.div`
     img{
         vertical-align: top;
     }
+    .leftIcon.show, .rightIcon.show{
+        display: inline-block;
+    }
     .leftIcon{
         position: absolute;
-        display: inline-block;
+        display: none;
         width: 50px;
         height: 50px;
         top: 50%;
@@ -28,7 +31,7 @@ export const CarouselWrapper = styled.div`
     }
     .rightIcon{
         position: absolute;
-        display: inline-block;
+        display: none;
         width: 50px;
         height: 50px;
         top: 50%;

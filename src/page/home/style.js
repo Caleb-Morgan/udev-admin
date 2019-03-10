@@ -166,6 +166,7 @@ export const Down = styled.div `
     border: 1px solid #ccc;
     padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px;
     img{
         width: 60px;
         height: 60px;
@@ -180,6 +181,7 @@ export const Down = styled.div `
         vertical-align: middle;
     }
     .popover{
+        display: none;
         position: absolute;
         top: -180px;
         left: 50%;
@@ -191,6 +193,9 @@ export const Down = styled.div `
         border: 1px solid #ccc;
         border-radius: 10px;
         box-sizing: border-box;
+    }
+    .popover.active{
+        display: inherit;
     }
     .popover .arrow{
         position: absolute;

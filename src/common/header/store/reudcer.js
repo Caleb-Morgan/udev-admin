@@ -5,7 +5,8 @@ const defaultState = fromJS({
     mouseIn: false,
     totalPage: 1,
     page: 1,
-    list: []
+    list: [],
+    showScroll: false
 })
 
 export default (state = defaultState, action) =>{
@@ -25,6 +26,8 @@ export default (state = defaultState, action) =>{
         });
         case creaters.CHANGEPAGE:
         return state.set('page', action.page);
+        case creaters.SHOWSCROLL:
+        return state.set('showScroll', action.status);
         default:
         return state;
     }

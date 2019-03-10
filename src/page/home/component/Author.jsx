@@ -9,7 +9,7 @@ class Author extends Component {
     render() {
         let Authorlist = [];
         this.props.list.toJS().map((item, index) =>{
-            Authorlist.push(<AuthorItem key={index}>
+            return Authorlist.push(<AuthorItem key={index}>
                 <a className="avatar" href="http://www.baidu.com">
                     <img src="./favicon.ico" alt="test"></img>
                 </a>

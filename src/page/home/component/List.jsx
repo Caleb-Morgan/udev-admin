@@ -1,154 +1,59 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { ListWrapper, ListItem, ItemLeft, ItemRight, More } from '../style.js';
-import Logo from '../../../static/logo.png'
+import Logo from '../../../static/logo.png';
+import { connect } from 'react-redux';
+import *as creaters from '../store/actionCreater';
 class List extends Component{
+    componentDidMount(){
+        this.props.getItem();
+    }
     render(){
+        let itemlist = [];
+        this.props.articleItem.toJS().map((item, index) =>{
+            const {title, introduction, author, authorurl, messageurl, messagenum, like} = item;
+            return itemlist.push(<ListItem key={index}>
+                <ItemLeft>
+                    <div className="title"><Link to='/detail'>{title}</Link></div>
+                    <div className="introduction">{introduction}</div>
+                    <div className="meta">
+                        <a href={authorurl}>{author}</a>
+                        <a href={messageurl}>
+                            <i className="icon iconfont">&#xe79d;</i>
+                            {messagenum}
+                        </a>
+                        <span>
+                            <i className="icon iconfont">&#xe8b4;</i>
+                            {like}
+                        </span>
+                    </div>
+                </ItemLeft>
+                <ItemRight>
+                    <img src={Logo} alt="name" />
+                </ItemRight>
+            </ListItem>)
+        })
         return(
             <ListWrapper>
-                <ListItem>
-                    <ItemLeft>
-                        <div className="title">贾元春有孩子么？曹雪芹用“榴花开处照宫闱”给出了答案</div>
-                        <div className="introduction">《红楼梦》中贾元春是个谜，很多人认为她非常重要，说贾家之兴衰系于她身上。我却认为恰恰相反，贾元春从始至终是颗权力博弈的棋子。不但不重要，最后等她...</div>
-                        <div className="meta">
-                            <a href="https://www.baidu.com">君笺雅侃红楼</a>
-                            <a href="https://www.baidu.com">
-                                <i className="icon iconfont">&#xe79d;</i>
-                                0
-                            </a>
-                            <span>
-                                <i className="icon iconfont">&#xe8b4;</i>
-                                0
-                            </span>
-                        </div>
-                    </ItemLeft>
-                    <ItemRight>
-                        <img src={Logo} alt="name" />
-                    </ItemRight>
-                </ListItem>
-                <ListItem>
-                    <ItemLeft>
-                        <div className="title">贾元春有孩子么？曹雪芹用“榴花开处照宫闱”给出了答案</div>
-                        <div className="introduction">《红楼梦》中贾元春是个谜，很多人认为她非常重要，说贾家之兴衰系于她身上。我却认为恰恰相反，贾元春从始至终是颗权力博弈的棋子。不但不重要，最后等她...</div>
-                        <div className="meta">
-                            <a href="https://www.baidu.com">君笺雅侃红楼</a>
-                            <a href="https://www.baidu.com">
-                                <i className="icon iconfont">&#xe79d;</i>
-                                0
-                            </a>
-                            <span>
-                                <i className="icon iconfont">&#xe8b4;</i>
-                                0
-                            </span>
-                        </div>
-                    </ItemLeft>
-                    <ItemRight>
-                        <img src={Logo} alt="name" />
-                    </ItemRight>
-                </ListItem>
-                <ListItem>
-                    <ItemLeft>
-                        <div className="title">贾元春有孩子么？曹雪芹用“榴花开处照宫闱”给出了答案</div>
-                        <div className="introduction">《红楼梦》中贾元春是个谜，很多人认为她非常重要，说贾家之兴衰系于她身上。我却认为恰恰相反，贾元春从始至终是颗权力博弈的棋子。不但不重要，最后等她...</div>
-                        <div className="meta">
-                            <a href="https://www.baidu.com">君笺雅侃红楼</a>
-                            <a href="https://www.baidu.com">
-                                <i className="icon iconfont">&#xe79d;</i>
-                                0
-                            </a>
-                            <span>
-                                <i className="icon iconfont">&#xe8b4;</i>
-                                0
-                            </span>
-                        </div>
-                    </ItemLeft>
-                    <ItemRight>
-                        <img src={Logo} alt="name" />
-                    </ItemRight>
-                </ListItem>
-                <ListItem>
-                    <ItemLeft>
-                        <div className="title">贾元春有孩子么？曹雪芹用“榴花开处照宫闱”给出了答案</div>
-                        <div className="introduction">《红楼梦》中贾元春是个谜，很多人认为她非常重要，说贾家之兴衰系于她身上。我却认为恰恰相反，贾元春从始至终是颗权力博弈的棋子。不但不重要，最后等她...</div>
-                        <div className="meta">
-                            <a href="https://www.baidu.com">君笺雅侃红楼</a>
-                            <a href="https://www.baidu.com">
-                                <i className="icon iconfont">&#xe79d;</i>
-                                0
-                            </a>
-                            <span>
-                                <i className="icon iconfont">&#xe8b4;</i>
-                                0
-                            </span>
-                        </div>
-                    </ItemLeft>
-                    <ItemRight>
-                        <img src={Logo} alt="name" />
-                    </ItemRight>
-                </ListItem>
-                <ListItem>
-                    <ItemLeft>
-                        <div className="title">贾元春有孩子么？曹雪芹用“榴花开处照宫闱”给出了答案</div>
-                        <div className="introduction">《红楼梦》中贾元春是个谜，很多人认为她非常重要，说贾家之兴衰系于她身上。我却认为恰恰相反，贾元春从始至终是颗权力博弈的棋子。不但不重要，最后等她...</div>
-                        <div className="meta">
-                            <a href="https://www.baidu.com">君笺雅侃红楼</a>
-                            <a href="https://www.baidu.com">
-                                <i className="icon iconfont">&#xe79d;</i>
-                                0
-                            </a>
-                            <span>
-                                <i className="icon iconfont">&#xe8b4;</i>
-                                0
-                            </span>
-                        </div>
-                    </ItemLeft>
-                    <ItemRight>
-                        <img src={Logo} alt="name" />
-                    </ItemRight>
-                </ListItem>
-                <ListItem>
-                    <ItemLeft>
-                        <div className="title">贾元春有孩子么？曹雪芹用“榴花开处照宫闱”给出了答案</div>
-                        <div className="introduction">《红楼梦》中贾元春是个谜，很多人认为她非常重要，说贾家之兴衰系于她身上。我却认为恰恰相反，贾元春从始至终是颗权力博弈的棋子。不但不重要，最后等她...</div>
-                        <div className="meta">
-                            <a href="https://www.baidu.com">君笺雅侃红楼</a>
-                            <a href="https://www.baidu.com">
-                                <i className="icon iconfont">&#xe79d;</i>
-                                0
-                            </a>
-                            <span>
-                                <i className="icon iconfont">&#xe8b4;</i>
-                                0
-                            </span>
-                        </div>
-                    </ItemLeft>
-                    <ItemRight>
-                        <img src={Logo} alt="name" />
-                    </ItemRight>
-                </ListItem>
-                <ListItem>
-                    <ItemLeft>
-                        <div className="title">贾元春有孩子么？曹雪芹用“榴花开处照宫闱”给出了答案</div>
-                        <div className="introduction">《红楼梦》中贾元春是个谜，很多人认为她非常重要，说贾家之兴衰系于她身上。我却认为恰恰相反，贾元春从始至终是颗权力博弈的棋子。不但不重要，最后等她...</div>
-                        <div className="meta">
-                            <a href="https://www.baidu.com">君笺雅侃红楼</a>
-                            <a href="https://www.baidu.com">
-                                <i className="icon iconfont">&#xe79d;</i>
-                                0
-                            </a>
-                            <span>
-                                <i className="icon iconfont">&#xe8b4;</i>
-                                0
-                            </span>
-                        </div>
-                    </ItemLeft>
-                    <ItemRight>
-                        <img src={Logo} alt="name" />
-                    </ItemRight>
-                </ListItem>
+                {itemlist}
                 <More href="http://www.baidu.com">阅读更多</More>
             </ListWrapper>
         )
     }
 }
 
-export default List;
+const mapStateToProps = (state) =>{
+    return {
+        articleItem: state.getIn(['home', 'articleItem'])
+    }
+}
+
+const mapDisplatchToProps = (displatch) =>{
+    return{
+        getItem(){
+            displatch(creaters.axios_article())
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDisplatchToProps)(List);
